@@ -5,20 +5,46 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Getting Started
 ```
+node server.js
+
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Prerequisites
 ```
-npm run build
-```
+file: config/congif.json
 
-### Lints and fixes files
 ```
-npm run lint
-```
+Update the config file by adding app client clientId & authToken
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+#### Endpoints
+
+* Application: 
+
+Open in your browser
+URL: http://localhost:8080/
+
+After authenticate a user via an GitHub API token, 
+you can see fetched user data returned from GitHub API.
+
+* Get access token: 
+
+URL: http://localhost:3000/get_access_token
+Type: POST 
+<p>
+Request Parameters: <br>
+client_id: application client id,<br>
+client_secret: application client secret,<br>
+code: generated authorization code,<br>
+</p>
+
+
+* Get user data: 
+
+URL: http://localhost:3000/get_user_data
+Type: GET 
+<p>headers: <br>
+'Authorization': 'Bearer generated access token',<br>
+</p>

@@ -1,0 +1,7 @@
+{
+    "gitHubOauthAuthorizeUrl": "https://github.com/login/oauth/authorize",
+    "oauthEndpoint": "https://github.com/login/oauth/access_token",
+    "state": "dev",
+    "authToken": "secret", 
+    "clientId": "secret"
+}
