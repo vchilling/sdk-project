@@ -27,6 +27,7 @@
 
 <script>
 import SDK from '../sdk';
+import store from '../store'
 
 export default {
   data() {
@@ -40,9 +41,9 @@ export default {
   methods: {
      fetchUserData() {
       SDK.fetchUserData()
-        .then(response => {
-          console.log(response);
-          this.userData = response;
+        .then(() => {
+          let sessionUserData  = store.state.userData;
+          this.userData = sessionUserData;
         })
         .catch(error => {
           console.error('Fetched User Data failed with error', error);
@@ -52,7 +53,7 @@ export default {
       let options = { day: '2-digit', month: '2-digit', year: 'numeric' };
       let formattedDate = new Date(dateString).toLocaleDateString('en-US', options);
       return formattedDate;
-    }
+    }, 
   }, 
 };
 </script>

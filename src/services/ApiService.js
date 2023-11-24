@@ -69,7 +69,7 @@ export default {
 
       let accessToken = data.access_token;
 
-      this.createOrUpdateSession(true, accessToken, Date.now() + 10 * 60 * 1000); 
+      this.createOrUpdateSession(true, accessToken, Date.now() + 10 * 60 * 1000, null); 
 
       this.goToAnotherView('/user-data');
       return true;
@@ -93,12 +93,15 @@ export default {
     if (userData.error) {
       throw new Error(`Error: ${response.error}`);
     } 
-    return userData;
+
+    this.createOrUpdateSession(true, accessToken, Date.now() + 10 * 60 * 1000, userData);
+
+    return true;
   },
   goToAnotherView(viewPath) {
     router.push(viewPath);
   },
-  createOrUpdateSession(isAuthenticated, token, expiration) {
-    store.commit('setSession', { isAuthenticated, token, expiration });
+  createOrUpdateSession(isAuthenticated, token, expiration, userData) {
+    store.commit('setSession', { isAuthenticated, token, expiration, userData });
   }
 };
